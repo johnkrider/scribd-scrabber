@@ -73,36 +73,30 @@
 
   <section class="card preview-card">
     <div class="section-title">
-      <div><span class="eyebrow">PREVIEW</span><h2>Real page preview</h2></div>
+      <div><span class="eyebrow">PREVIEW</span><h2 id="viewerTitle">Choose a page</h2></div>
       <span id="previewCount" class="badge">0 pages</span>
     </div>
-    <div id="preview" class="preview-grid">
-      <div class="empty-preview">Choose a file to preview its actual document pages.</div>
-    </div>
-  </section>
-
-  <div id="viewerModal" class="viewer-modal" aria-hidden="true">
-    <div class="viewer-topbar">
-      <div><span class="eyebrow">DOCUMENT PREVIEW</span><strong id="viewerTitle">Page 1 of 1</strong></div>
-      <div class="viewer-tools">
-        <button id="zoomOut" class="viewer-btn" title="Zoom out">−</button>
-        <span id="zoomText">100%</span>
-        <button id="zoomIn" class="viewer-btn" title="Zoom in">+</button>
-        <button id="fitBtn" class="viewer-btn">Fit</button>
-        <button id="closeViewer" class="viewer-btn close-btn" title="Close">×</button>
-      </div>
-    </div>
-    <div class="viewer-stage">
+    <div id="previewViewer" class="main-viewer">
       <button id="prevPage" class="nav-arrow" aria-label="Previous page">‹</button>
-      <div id="viewerPage" class="viewer-page"><div class="viewer-loading">Loading page…</div></div>
+      <div id="viewerStage" class="viewer-stage">
+        <div id="viewerEmpty" class="viewer-empty">Choose an HTML file to preview the document.</div>
+      </div>
       <button id="nextPage" class="nav-arrow" aria-label="Next page">›</button>
     </div>
-    <div class="viewer-bottom">
+    <div class="viewer-controls">
+      <button id="zoomOut" class="viewer-btn">−</button>
+      <span id="zoomText">Fit</span>
+      <button id="zoomIn" class="viewer-btn">+</button>
+      <button id="fitBtn" class="viewer-btn">Fit</button>
+      <button id="fullBtn" class="viewer-btn">⛶ Full screen</button>
+    </div>
+    <div class="thumb-navigation">
       <button id="thumbPrev" class="strip-arrow">‹</button>
       <div id="thumbStrip" class="thumb-strip"></div>
       <button id="thumbNext" class="strip-arrow">›</button>
     </div>
-  </div>
+    <div id="thumbStatus" class="thumb-status">No pages loaded</div>
+  </section>
 
   <footer>
     <span>Runs client-side</span><span>•</span>
@@ -111,6 +105,6 @@
   </footer>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="app.js"></script>
+<script src="app.js?v=6.0.0"></script>
 </body>
 </html>

@@ -13,7 +13,7 @@
     <div>
       <span class="eyebrow">LOCAL DOCUMENT TOOL</span>
       <h1>Scribd HTML <span>→</span> PDF</h1>
-      <p>Load an HTML viewer file, preview its real pages, and export a high-quality PDF without keeping the whole PDF in browser memory.</p>
+      <p>Select an HTML viewer file. It stays inside this app — it is never opened as a new browser page.</p>
     </div>
     <button id="themeBtn" class="icon-btn" title="Toggle theme">☾</button>
   </header>
@@ -67,7 +67,7 @@
     <button id="startBtn" class="start-btn" disabled>Generate PDF</button>
 
     <div class="notice">
-      <strong>Large PDFs:</strong> pages are processed one at a time and written directly to the selected PDF file when your browser supports the File System Access API. This avoids keeping a 200+ page PDF in RAM.
+      <strong>Local processing:</strong> the selected HTML is read by this page only. It is not uploaded or opened as a new browser tab. The renderer may still request resources referenced by the HTML viewer.
     </div>
   </section>
 
@@ -80,6 +80,8 @@
       <button id="prevPage" class="nav-arrow" aria-label="Previous page">‹</button>
       <div id="viewerStage" class="viewer-stage">
         <div id="viewerEmpty" class="viewer-empty">Choose an HTML file to preview the document.</div>
+        <canvas id="mainCanvas" class="main-canvas"></canvas>
+        <div id="viewerLoading" class="viewer-loading hidden">Rendering page…</div>
       </div>
       <button id="nextPage" class="nav-arrow" aria-label="Next page">›</button>
     </div>
@@ -105,6 +107,6 @@
   </footer>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="app.js?v=6.0.0"></script>
+<script src="app.js?v=7.0.0"></script>
 </body>
 </html>

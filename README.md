@@ -1,24 +1,42 @@
-# Scribd HTML Scraper — GitHub Pages v6
+# Scribd HTML → PDF v7
 
-Pure HTML/CSS/JavaScript build for GitHub Pages.
+Static GitHub Pages build.
 
-## v6 changes
-- Replaces the old grid preview with a large document viewer.
-- Previous/next arrows navigate all detected pages.
-- Keyboard Left/Right navigation.
-- Zoom, Fit, and Full screen controls.
-- Thumbnail strip for quick navigation.
-- Preview uses the actual rendered HTML viewer page instead of placeholder cards.
-- PDF writer explicitly calls `createWritable()` on the FileSystemFileHandle.
-- Added `app.js?v=6.0.0` to prevent GitHub Pages/browser cache from serving the old JavaScript.
-- PDF pages are streamed one at a time to the selected local file.
+## File handling
 
-## Deploy
-Upload `index.html`, `style.css`, `app.js`, and `README.md` to the GitHub Pages repository.
-After deployment, hard-refresh with Ctrl+F5 once.
+The chosen HTML is read with the browser File API. It is **not navigated to**
+as a webpage and is not opened in a new tab. Drag-and-drop is also handled by
+the app so dropping a file cannot cause the browser to navigate to it.
 
-## Browser
-Use current Chrome or Edge. The large-file export uses the File System Access API, which requires a secure context such as GitHub Pages HTTPS.
+For rendering, the app places the HTML into an off-screen iframe so the
+viewer JavaScript can execute. The visible preview is a canvas snapshot of
+the document page.
 
-## Access note
-Use only HTML/document content you are authorized to access. The project does not bypass authentication, paywalls, DRM, or other access controls.
+## Preview
+
+- Large actual page preview
+- Previous/next arrows
+- Keyboard arrows
+- Zoom in/out
+- Fit
+- Full screen
+- First 8 page thumbnails
+
+## Large PDF export
+
+The PDF is written page-by-page through the browser File System Access API.
+The important distinction is:
+
+`FileSystemFileHandle` → `createWritable()` → `FileSystemWritableFileStream`
+
+Only the writable stream is passed to the PDF writer.
+
+The whole 200+ page PDF is not kept in a single in-memory PDF object.
+
+## GitHub Pages
+
+Upload `index.html`, `style.css`, `app.js`, and `README.md` to the repository.
+After deployment, hard-refresh with Ctrl+F5 when replacing an older version.
+
+Use only content you are authorized to access. The project does not bypass
+authentication, paywalls, DRM, or other access controls.

@@ -46,3 +46,11 @@ footer{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;color:var(--mu
 .thumb-navigation{display:flex;align-items:center;gap:10px;border-top:1px solid var(--border);padding:12px 0 8px}.thumb-strip{display:flex;gap:10px;overflow:hidden;flex:1;height:118px;align-items:center}.viewer-thumb{height:102px;min-width:78px;padding:4px;border:1px solid var(--border);background:var(--panel2);border-radius:8px;cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center}.viewer-thumb.active{border:2px solid var(--accent);box-shadow:0 0 0 2px rgba(124,108,255,.18)}.viewer-thumb canvas{max-height:100%;max-width:100%;display:block;background:#fff}.viewer-thumb span{position:absolute;bottom:-20px;left:0;right:0;text-align:center;color:var(--muted);font-size:10px}.strip-arrow{width:44px;height:44px;border-radius:50%;border:1px solid var(--border);background:var(--panel2);color:var(--text);font-size:30px;cursor:pointer;flex:0 0 auto}.thumb-status{text-align:center;color:var(--muted);font-size:11px;padding:3px 0 0}
 .preview-card.fullscreen{position:fixed;inset:0;z-index:2000;margin:0;border-radius:0;padding:20px;background:var(--bg);display:flex;flex-direction:column}.preview-card.fullscreen .main-viewer{flex:1;height:auto;min-height:0}.preview-card.fullscreen .thumb-navigation{flex:0 0 auto}
 @media(max-width:700px){.main-viewer{height:65vh;min-height:400px}.viewer-stage{padding:15px 55px}.nav-arrow{width:44px;height:44px;font-size:32px}#prevPage{left:8px}#nextPage{right:8px}.thumb-navigation{gap:5px}.viewer-thumb{height:82px;min-width:62px}}
+
+/* v7: the original HTML is rendered off-screen; the visible preview is a canvas. */
+.viewer-stage{position:relative}
+.main-canvas{display:block;max-width:none;background:#fff;box-shadow:0 20px 70px rgba(0,0,0,.45);border-radius:2px}
+.viewer-loading{position:absolute;z-index:20;background:rgba(10,13,18,.86);border:1px solid var(--border);border-radius:10px;padding:10px 14px;color:var(--text);font-size:13px}
+.hidden{display:none!important}
+.drop-zone{cursor:default}
+.drop-zone .primary-btn{cursor:pointer}

@@ -81,6 +81,29 @@
     </div>
   </section>
 
+  <div id="viewerModal" class="viewer-modal" aria-hidden="true">
+    <div class="viewer-topbar">
+      <div><span class="eyebrow">DOCUMENT PREVIEW</span><strong id="viewerTitle">Page 1 of 1</strong></div>
+      <div class="viewer-tools">
+        <button id="zoomOut" class="viewer-btn" title="Zoom out">−</button>
+        <span id="zoomText">100%</span>
+        <button id="zoomIn" class="viewer-btn" title="Zoom in">+</button>
+        <button id="fitBtn" class="viewer-btn">Fit</button>
+        <button id="closeViewer" class="viewer-btn close-btn" title="Close">×</button>
+      </div>
+    </div>
+    <div class="viewer-stage">
+      <button id="prevPage" class="nav-arrow" aria-label="Previous page">‹</button>
+      <div id="viewerPage" class="viewer-page"><div class="viewer-loading">Loading page…</div></div>
+      <button id="nextPage" class="nav-arrow" aria-label="Next page">›</button>
+    </div>
+    <div class="viewer-bottom">
+      <button id="thumbPrev" class="strip-arrow">‹</button>
+      <div id="thumbStrip" class="thumb-strip"></div>
+      <button id="thumbNext" class="strip-arrow">›</button>
+    </div>
+  </div>
+
   <footer>
     <span>Runs client-side</span><span>•</span>
     <span>HTML stays on your computer</span><span>•</span>

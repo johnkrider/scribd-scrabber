@@ -10,3 +10,27 @@ button,select,input{font:inherit}.app-shell{width:min(1050px,calc(100% - 32px));
 .notice{margin-top:15px;color:var(--muted);background:var(--panel2);border:1px solid var(--border);border-radius:12px;padding:12px 14px;font-size:12px;line-height:1.55}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.badge{background:var(--panel2);border:1px solid var(--border);border-radius:99px;padding:6px 10px;color:var(--muted);font-size:12px}
 .preview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}.preview-item{border:1px solid var(--border);background:var(--panel2);border-radius:12px;padding:7px;overflow:hidden}.thumb{height:190px;background:#fff;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center}.thumb canvas{display:block;max-width:100%;max-height:100%;object-fit:contain}.preview-item small{display:block;padding:7px 3px 2px;color:var(--muted)}.empty-preview{grid-column:1/-1;padding:35px;text-align:center;color:var(--muted);border:1px dashed var(--border);border-radius:14px}
 footer{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;color:var(--muted);font-size:11px;padding:8px}@media(max-width:700px){.app-shell{width:calc(100% - 20px);padding-top:25px}.card{padding:16px;border-radius:17px}.settings{grid-template-columns:1fr}}
+
+/* Full-screen document viewer */
+.viewer-modal{position:fixed;inset:0;z-index:1000;background:rgba(5,7,11,.98);display:none;flex-direction:column;color:#f5f7fb}
+.viewer-modal.open{display:flex}
+.viewer-topbar{height:68px;flex:0 0 68px;border-bottom:1px solid #272d39;display:flex;align-items:center;justify-content:space-between;padding:0 22px;gap:18px;background:#0d1016}
+.viewer-topbar strong{display:block;margin-top:4px;font-size:14px}
+.viewer-tools{display:flex;align-items:center;gap:7px}
+.viewer-btn{height:38px;min-width:38px;border:1px solid #303746;background:#171c25;color:#f5f7fb;border-radius:9px;padding:0 12px;cursor:pointer}
+.viewer-btn:hover,.nav-arrow:hover,.strip-arrow:hover{border-color:#7c6cff;background:#202638}
+.close-btn{font-size:25px;margin-left:7px}
+.viewer-stage{position:relative;min-height:0;flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle at center,rgba(124,108,255,.06),transparent 45%)}
+.viewer-page{width:calc(100% - 150px);height:calc(100% - 30px);display:flex;align-items:center;justify-content:center;overflow:auto;padding:10px}
+.viewer-page canvas{display:block;max-width:none;box-shadow:0 16px 50px rgba(0,0,0,.45);background:white;transition:width .15s ease}
+.viewer-loading{color:#9aa3b2;font-size:14px}
+.nav-arrow{position:absolute;z-index:3;width:56px;height:56px;border-radius:50%;border:1px solid #343b49;background:#1c2330;color:#fff;font-size:42px;line-height:45px;cursor:pointer;display:grid;place-items:center;top:50%;transform:translateY(-50%)}
+#prevPage{left:18px}#nextPage{right:18px}
+.viewer-bottom{height:150px;flex:0 0 150px;border-top:1px solid #272d39;background:#0d1016;display:flex;align-items:center;gap:12px;padding:12px 18px}
+.thumb-strip{display:flex;gap:10px;overflow:hidden;flex:1;height:126px;align-items:center}
+.viewer-thumb{height:110px;min-width:78px;padding:4px;border:1px solid #303746;background:#171c25;border-radius:8px;cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center}
+.viewer-thumb.active{border:2px solid #7c6cff;box-shadow:0 0 0 2px rgba(124,108,255,.18)}
+.viewer-thumb canvas{max-height:100%;max-width:100%;display:block;background:#fff}
+.viewer-thumb span{position:absolute;bottom:-22px;left:0;right:0;text-align:center;color:#9aa3b2;font-size:11px}
+.strip-arrow{width:44px;height:44px;border-radius:50%;border:1px solid #303746;background:#171c25;color:#fff;font-size:30px;cursor:pointer;flex:0 0 auto}
+@media(max-width:700px){.viewer-topbar{padding:0 10px}.viewer-stage{padding-bottom:5px}.viewer-page{width:calc(100% - 80px)}.nav-arrow{width:42px;height:42px;font-size:32px}#prevPage{left:8px}#nextPage{right:8px}.viewer-bottom{height:115px;flex-basis:115px;padding:8px}.thumb-strip{height:96px}.viewer-thumb{height:82px;min-width:60px}.viewer-tools #zoomText{display:none}}

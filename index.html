@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Scribd HTML → PDF</title>
+  <meta name="description" content="Render a local Scribd HTML viewer into a PDF.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app-shell">
+  <header class="hero">
+    <div>
+      <span class="eyebrow">LOCAL DOCUMENT TOOL</span>
+      <h1>Scribd HTML <span>→</span> PDF</h1>
+      <p>Load an HTML viewer file, preview its real pages, and export a high-quality PDF without keeping the whole PDF in browser memory.</p>
+    </div>
+    <button id="themeBtn" class="icon-btn" title="Toggle theme">☾</button>
+  </header>
+
+  <section class="card">
+    <div id="dropZone" class="drop-zone" tabindex="0">
+      <div class="drop-icon">↑</div>
+      <h2>Drop your HTML file here</h2>
+      <p>or choose a local <code>.html</code> / <code>.htm</code> file</p>
+      <label class="primary-btn">Choose HTML file
+        <input id="fileInput" type="file" accept=".html,.htm,text/html">
+      </label>
+    </div>
+
+    <div id="fileInfo" class="file-info hidden">
+      <div class="file-icon">HTML</div>
+      <div class="file-text">
+        <strong id="fileName">—</strong>
+        <span id="pageCount">—</span>
+      </div>
+      <button id="removeFile" class="secondary-btn">Remove</button>
+    </div>
+
+    <div class="settings">
+      <div class="setting">
+        <label for="quality">Render quality</label>
+        <select id="quality">
+          <option value="1">Standard</option>
+          <option value="1.5" selected>High</option>
+          <option value="2">Very high</option>
+        </select>
+      </div>
+      <div class="setting">
+        <label for="delay">Page render delay</label>
+        <select id="delay">
+          <option value="200">Fast</option>
+          <option value="500" selected>Normal</option>
+          <option value="1000">Slow / complex pages</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span id="status">Waiting for an HTML file</span>
+        <span id="progressText">0%</span>
+      </div>
+      <div class="progress"><div id="progressBar"></div></div>
+    </div>
+
+    <button id="startBtn" class="start-btn" disabled>Generate PDF</button>
+
+    <div class="notice">
+      <strong>Large PDFs:</strong> pages are processed one at a time and written directly to the selected PDF file when your browser supports the File System Access API. This avoids keeping a 200+ page PDF in RAM.
+    </div>
+  </section>
+
+  <section class="card preview-card">
+    <div class="section-title">
+      <div><span class="eyebrow">PREVIEW</span><h2>Real page preview</h2></div>
+      <span id="previewCount" class="badge">0 pages</span>
+    </div>
+    <div id="preview" class="preview-grid">
+      <div class="empty-preview">Choose a file to preview its actual document pages.</div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Runs client-side</span><span>•</span>
+    <span>HTML stays on your computer</span><span>•</span>
+    <span>Use only content you are authorized to access</span>
+  </footer>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
